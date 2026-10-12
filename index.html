@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מדריך Career Ops</title>
+<meta name="description" content="מדריך בעברית להתקנה ושימוש ב-Career Ops עם Claude Code: מקורות חיים, איתור משרות, התאמה, הגשות ומעקב. כולל היכולות שהוספתי לסוכן שלי.">
+<meta property="og:title" content="נתתם לקלוד את קורות החיים שלכם. עכשיו תנו לו לעבוד בשבילכם.">
+<meta property="og:description" content="מדריך צעד־אחר־צעד ל-Career Ops: מתחילים מאפס, או כל היכולות של הסוכן שלי.">
+<link rel="canonical" href="https://adva-mo.github.io/careerops-guide/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="מדריך Career Ops">
+<meta property="og:url" content="https://adva-mo.github.io/careerops-guide/">
+<meta property="og:image" content="https://adva-mo.github.io/careerops-guide/assets/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="סוכן שמחפש עבודה בשבילכם: מדריך בעברית ל-Career Ops עם Claude Code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="נתתם לקלוד את קורות החיים שלכם. עכשיו תנו לו לעבוד בשבילכם.">
+<meta name="twitter:description" content="מדריך צעד־אחר־צעד ל-Career Ops: מתחילים מאפס, או כל היכולות של הסוכן שלי.">
+<meta name="twitter:image" content="https://adva-mo.github.io/careerops-guide/assets/og-image.jpg">
+<meta name="theme-color" content="#16130f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23d9774b'/%3E%3Cpath d='M18 34l9 9 19-21' stroke='white' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Rubik:wght@500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2; --bg2:#f2ece3; --card:#ffffff; --ink:#1d1a16; --ink2:#5b544b; --line:#e6ded2;
+  --accent:#d9774b; --accent-ink:#a94e25; --accent-soft:#fbe9df;
+  --ok:#2f7d5b; --ok-soft:#e2f2ea; --warn:#a66a00; --warn-soft:#fdf1d8; --bad:#b23b3b; --bad-soft:#fae3e3;
+  --code-bg:#1b1916; --code-ink:#f3eee6; --shadow:0 1px 2px rgba(30,20,10,.05),0 6px 24px rgba(30,20,10,.06);
+  --r:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16130f; --bg2:#1e1a15; --card:#221e19; --ink:#f3eee6; --ink2:#b5ab9e; --line:#352f28;
+    --accent:#e8875a; --accent-ink:#f2a47f; --accent-soft:#3a2519;
+    --ok:#6cc79c; --ok-soft:#183026; --warn:#e6b34d; --warn-soft:#33270f; --bad:#ec8a8a; --bad-soft:#3a1c1c;
+    --code-bg:#0f0d0b; --code-ink:#f3eee6; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16130f; --bg2:#1e1a15; --card:#221e19; --ink:#f3eee6; --ink2:#b5ab9e; --line:#352f28;
+  --accent:#e8875a; --accent-ink:#f2a47f; --accent-soft:#3a2519;
+  --ok:#6cc79c; --ok-soft:#183026; --warn:#e6b34d; --warn-soft:#33270f; --bad:#ec8a8a; --bad-soft:#3a1c1c;
+  --code-bg:#0f0d0b; --code-ink:#f3eee6; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 24px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 Heebo,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,h4{font-family:Rubik,Heebo,sans-serif;line-height:1.25;margin:0}
+a{color:var(--accent-ink)}
+code,kbd,pre{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+p{margin:.5em 0}
+ul,ol{padding-inline-start:1.3em;margin:.4em 0}
+li{margin:.2em 0}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:10px;height:56px}
+.brand{font:700 16px Rubik,sans-serif;display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.brand i{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;font-style:normal;font-size:15px}
+.top .sp{flex:1}
+.pill{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 14px;font:500 14px Heebo,sans-serif;cursor:pointer;min-height:38px}
+.pill:active{transform:scale(.97)}
+.iconbtn{width:38px;padding:0;display:grid;place-items:center}
+.bar{position:absolute;bottom:-1px;inset-inline-start:0;height:3px;background:var(--accent);width:0;transition:width .1s linear}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.navlayer{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:41}
+.drawer{position:absolute;top:0;bottom:0;pointer-events:auto;visibility:hidden;inset-inline-end:0;width:min(340px,88vw);background:var(--card);z-index:41;transform:translateX(-105%);transition:transform .25s ease;overflow-y:auto;padding:18px 18px 40px;box-shadow:var(--shadow)}
+[dir="rtl"] .drawer{inset-inline-end:auto;inset-inline-start:0;transform:translateX(105%)}
+body.nav-open .scrim{opacity:1;pointer-events:auto}
+body.nav-open .drawer{transform:none;visibility:visible}
+.drawer{transition:transform .25s ease,visibility .25s}
+.drawer h4{font-size:13px;color:var(--ink2);margin:18px 0 6px;letter-spacing:.02em}
+.drawer a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 10px;border-radius:10px;color:var(--ink);text-decoration:none}
+.drawer a:hover{background:var(--bg2)}
+.drawer a .chk{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);flex:none}
+.drawer a.done .chk{background:var(--ok);border-color:var(--ok)}
+
+/* hero */
+.hero{padding-top:44px;padding-bottom:18px;text-align:center}
+.kicker{display:inline-block;font:500 13px Heebo;color:var(--accent-ink);background:var(--accent-soft);padding:4px 12px;border-radius:999px;margin-bottom:16px}
+.hero h1{font-size:clamp(30px,8.4vw,52px);font-weight:800;letter-spacing:-.01em}
+.hero h1 span{color:var(--accent)}
+.hero p.lead{color:var(--ink2);font-size:18px;max-width:560px;margin:16px auto 0}
+.tracks{display:grid;gap:14px;margin:30px 0 8px}
+@media (min-width:640px){.tracks{grid-template-columns:1fr 1fr}}
+.track{display:block;text-align:start;text-decoration:none;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:20px 20px 18px;box-shadow:var(--shadow);position:relative;transition:transform .15s,border-color .15s}
+.track:hover{transform:translateY(-2px);border-color:var(--accent)}
+.track .n{font:700 13px Rubik;color:var(--ink2)}
+.track h2{font-size:23px;margin:4px 0 6px}
+.track p{margin:0;color:var(--ink2);font-size:15.5px}
+.track .go{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font:700 15px Rubik;color:var(--accent-ink)}
+.track.pro{background:linear-gradient(160deg,var(--accent-soft),var(--card) 70%);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.track .prog{position:absolute;top:18px;inset-inline-end:18px;font:600 12px Heebo;color:var(--ink2)}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;font-size:14px;color:var(--ink2);margin-top:14px}
+
+/* badges */
+.tag{display:inline-flex;align-items:center;gap:6px;font:600 12.5px Heebo;padding:3px 10px;border-radius:999px;vertical-align:middle;white-space:nowrap}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.mine{background:var(--accent-soft);color:var(--accent-ink)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+
+/* sections */
+.part{padding-top:34px;padding-bottom:8px}
+.part-head{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.part-head .eyebrow{font:700 13px Rubik;color:var(--accent-ink);letter-spacing:.04em}
+.part-head h2{font-size:clamp(25px,6.4vw,34px);font-weight:800}
+.part-head p{color:var(--ink2);margin:0}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.step-h{display:flex;gap:12px;align-items:flex-start;margin-bottom:6px}
+.num{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--ink);color:var(--bg);font:700 15px Rubik}
+.step.done .num{background:var(--ok);color:#fff}
+.step-h h3{font-size:20.5px;margin-top:3px}
+.step-h .meta{font-size:13px;color:var(--ink2);margin-top:2px}
+.done-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:16px;padding:11px;border-radius:12px;border:1.5px dashed var(--line);background:transparent;color:var(--ink2);font:600 15px Heebo;cursor:pointer}
+.step.done .done-btn{border-style:solid;border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
+
+/* code + prompts */
+.cmd{position:relative;display:flex;align-items:stretch;background:var(--code-bg);border-radius:12px;margin:10px 0;overflow:hidden}
+.cmd code{flex:1;color:var(--code-ink);background:transparent;border:0;border-radius:0;padding:13px 14px;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere;direction:ltr;text-align:left}
+.cmd code .c{color:#9b917f}
+.copy{flex:none;border:0;background:rgba(255,255,255,.08);color:#fff;font:600 13.5px Heebo;padding:0 14px;cursor:pointer;min-width:74px}
+.copy:hover{background:rgba(255,255,255,.16)}
+.copy.ok{background:var(--ok);color:#fff}
+.prompt{border:1.5px solid color-mix(in srgb,var(--accent) 40%,var(--line));border-radius:14px;margin:14px 0;overflow:hidden;background:var(--card)}
+.prompt-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px 10px 14px;background:var(--accent-soft)}
+.prompt-h b{font:700 14.5px Rubik;color:var(--accent-ink)}
+.prompt-h .copy{background:var(--accent);border-radius:10px;padding:8px 14px;min-height:38px}
+.prompt-h .copy.ok{background:var(--ok)}
+.prompt pre{margin:0;padding:14px;font-size:13.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;direction:ltr;text-align:left;color:var(--ink);max-height:260px;overflow:auto}
+.prompt.open pre{max-height:none}
+.more{display:block;width:100%;border:0;border-top:1px solid var(--line);background:transparent;color:var(--ink2);padding:8px;font:500 13.5px Heebo;cursor:pointer}
+kbd{background:var(--bg2);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:.85em}
+:not(pre)>code{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.86em;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+
+/* callouts */
+.note{border-radius:12px;padding:12px 14px;margin:12px 0;font-size:15.5px;background:var(--bg2);border-inline-start:4px solid var(--line)}
+.note.ok{background:var(--ok-soft);border-color:var(--ok)}
+.note.warn{background:var(--warn-soft);border-color:var(--warn)}
+.note.bad{background:var(--bad-soft);border-color:var(--bad)}
+.note.mine{background:var(--accent-soft);border-color:var(--accent)}
+.note b:first-child{display:block;margin-bottom:2px}
+
+/* figures */
+figure{margin:14px 0}
+figure button{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#1b1a17;cursor:zoom-in}
+figure img{display:block;width:100%;height:auto}
+figure.paper button{background:#fff;max-width:340px;margin:0 auto}
+figcaption{font-size:13.5px;color:var(--ink2);margin-top:6px;text-align:center}
+.lb{position:fixed;inset:0;z-index:60;background:rgba(10,8,6,.92);display:none;align-items:center;justify-content:center;padding:16px;cursor:zoom-out;overflow:auto}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:100%;border-radius:8px}
+
+/* lists / grids */
+.checks{list-style:none;padding:0}
+.checks li{position:relative;padding-inline-start:28px;margin:8px 0}
+.checks li::before{content:"✓";position:absolute;inset-inline-start:0;top:0;color:var(--ok);font-weight:700}
+.nots li::before{content:"✕";color:var(--bad)}
+.grid2{display:grid;gap:10px;margin:12px 0}
+@media (min-width:600px){.grid2{grid-template-columns:1fr 1fr}}
+.mini{background:var(--bg2);border-radius:12px;padding:12px 14px}
+.mini h4{font-size:15.5px;margin-bottom:4px}
+.mini p{margin:0;font-size:15px;color:var(--ink2)}
+.cmds{display:grid;gap:8px;margin:10px 0}
+.cmdrow{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;background:var(--bg2);border-radius:12px;padding:10px 12px}
+.cmdrow code{white-space:nowrap}
+.cmdrow span{font-size:15px;color:var(--ink2)}
+@media (max-width:420px){.cmdrow{grid-template-columns:1fr}}
+.cmdrow .cp{border:0;background:none;color:var(--accent-ink);font:600 13px Heebo;cursor:pointer;padding:0;justify-self:start}
+
+/* workflow */
+.flow{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x mandatory;margin:0 -16px;padding-inline:16px}
+.flow .node{flex:0 0 78%;max-width:300px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+@media (min-width:760px){.flow{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;margin:0;padding-inline:0}.flow .node{max-width:none}}
+.node .k{font:800 26px Rubik;color:var(--accent)}
+.node h4{font-size:17px;margin:2px 0 8px}
+.node .row{font-size:14px;margin:8px 0 0;padding-top:8px;border-top:1px dashed var(--line)}
+.node code{white-space:normal;word-break:break-all}
+.node .row b{display:block;font-size:12.5px;color:var(--ink2);font-weight:600}
+.swipe{font-size:13px;color:var(--ink2);text-align:center;margin-top:-4px}
+@media (min-width:760px){.swipe{display:none}}
+
+/* feature accordions */
+details.feat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin:12px 0;box-shadow:var(--shadow);overflow:hidden}
+details.feat>summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;gap:12px;align-items:center}
+details.feat>summary::-webkit-details-marker{display:none}
+.ficon{flex:none;width:42px;height:42px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;font-size:21px}
+.ftxt{flex:1;min-width:0}
+.ftxt h3{font-size:18.5px}
+.ftxt p{margin:2px 0 0;font-size:14.5px;color:var(--ink2);line-height:1.5}
+.chev{flex:none;transition:transform .2s;color:var(--ink2);font-size:20px}
+details[open] .chev{transform:rotate(180deg)}
+.fbody{padding:0 18px 18px}
+.fbody h4{font-size:15.5px;margin:16px 0 4px;color:var(--accent-ink)}
+.fbody h4:first-child{margin-top:4px}
+details.feat.done .ficon{background:var(--ok-soft)}
+
+/* faq */
+details.q{border-bottom:1px solid var(--line)}
+details.q summary{cursor:pointer;padding:14px 0;font:600 16.5px Heebo;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1}
+details.q[open] summary::after{content:"−"}
+details.q div{padding:0 0 14px;color:var(--ink2)}
+
+.divider{height:1px;background:var(--line);margin:28px 0 0}
+.next{display:flex;justify-content:center;margin:26px 0 6px}
+.next a{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);text-decoration:none;padding:13px 22px;border-radius:999px;font:700 16px Rubik}
+footer{padding-top:36px;padding-bottom:60px;color:var(--ink2);font-size:14px;text-align:center}
+footer p{margin:.35em 0}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,30px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font:600 14.5px Heebo;opacity:0;transition:.2s;z-index:70;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i>✓</i>Career Ops · המדריך</a>
+    <span class="sp"></span>
+    <button class="pill" id="menuBtn" aria-controls="drawer" aria-expanded="false">☰ תוכן</button>
+    <button class="pill iconbtn" id="themeBtn" aria-label="מצב כהה/בהיר">◐</button>
+  </div>
+  <div class="bar" id="bar"></div>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<div class="navlayer"><nav class="drawer" id="drawer" aria-label="תוכן המדריך">
+  <h4>מסלול 1 · מתחילים מאפס</h4>
+  <a href="#what">מה הסוכן עושה <span class="chk" data-for="what"></span></a>
+  <a href="#needs">מה צריך לפני <span class="chk" data-for="needs"></span></a>
+  <a href="#install">התקנה <span class="chk" data-for="install"></span></a>
+  <a href="#first">הרצה ראשונה <span class="chk" data-for="first"></span></a>
+  <a href="#results">מה מקבלים <span class="chk" data-for="results"></span></a>
+  <a href="#daily">שימוש יומיומי <span class="chk" data-for="daily"></span></a>
+  <h4>התהליך המלא</h4>
+  <a href="#flow">מקורות חיים ← מעקב</a>
+  <h4>מסלול 2 · כל היכולות של הסוכן שלי</h4>
+  <a href="#pro">לפני שמתחילים</a>
+  <a href="#f-scan">סריקה יומית אחת <span class="chk" data-for="f-scan"></span></a>
+  <a href="#f-wa">משרות מקבוצות וואטסאפ <span class="chk" data-for="f-wa"></span></a>
+  <a href="#f-apply">הגשה אוטומטית <span class="chk" data-for="f-apply"></span></a>
+  <a href="#f-gmail">סנכרון מג'ימייל <span class="chk" data-for="f-gmail"></span></a>
+  <a href="#f-conf">ציון ≠ סיכוי <span class="chk" data-for="f-conf"></span></a>
+  <a href="#f-il">כיול לשוק הישראלי <span class="chk" data-for="f-il"></span></a>
+  <a href="#f-guard">הגנות על טבלת המעקב <span class="chk" data-for="f-guard"></span></a>
+  <h4>עזרה</h4>
+  <a href="#trouble">תקלות נפוצות</a>
+  <a href="#limits">מגבלות חשובות</a>
+</nav></div>
+
+<main id="top">
+<section class="hero wrap">
+  <span class="kicker">מדריך בעברית · Career Ops + Claude Code</span>
+  <h1>נתתם לקלוד את קורות החיים שלכם.<br><span>עכשיו תנו לו לעבוד בשבילכם.</span></h1>
+  <p class="lead">סוכן חיפוש עבודה שרץ אצלכם במחשב: מוצא משרות, בודק התאמה לקורות החיים שלכם, מכין קו״ח מותאמים ומנהל מעקב. בחרו מסלול:</p>
+
+  <div class="tracks">
+    <a class="track" href="#basic">
+      <span class="prog" data-prog="basic"></span>
+      <span class="n">מסלול 1</span>
+      <h2>מתחילים מאפס</h2>
+      <p>התקנה, הרצה ראשונה ושימוש יומיומי בגרסה הרשמית. כל צעד נבדק בהתקנה אמיתית.</p>
+      <span class="go">יאללה מתחילים ←</span>
+    </a>
+    <a class="track pro" href="#pro">
+      <span class="prog" data-prog="pro"></span>
+      <span class="n">מסלול 2</span>
+      <h2>רוצים את כל היכולות של הסוכן שלי</h2>
+      <p>סריקה יומית מכל המקורות, משרות מוואטסאפ, הגשה אוטומטית, סנכרון מג׳ימייל ועוד, עם פרומפט להעתקה לכל יכולת.</p>
+      <span class="go">לכל היכולות ←</span>
+    </a>
+  </div>
+  <div class="legend">
+    <span class="tag ok">רשמי · נבדק בפועל</span>
+    <span class="tag mine">תוספת שלי · לא חלק מהגרסה הרשמית</span>
+  </div>
+</section>
+
+<!-- ============ TRACK 1 ============ -->
+<section class="part wrap" id="basic">
+  <div class="part-head">
+    <span class="eyebrow">מסלול 1 · מתחילים מאפס</span>
+    <h2>מהתקנה להערכה ראשונה, בערך 7 דקות</h2>
+    <p>כל מה שכאן הוא <span class="tag ok">רשמי · נבדק בפועל</span>. עברתי על ההתקנה כמשתמשת חדשה לגמרי, וכל צילום מסך כאן הוא מההרצה הזאת. הדמות בצילומים בדויה.</p>
+  </div>
+
+  <article class="step" id="what" data-step="what" data-track="basic">
+    <div class="step-h"><span class="num">1</span><div><h3>מה הסוכן עושה (ומה לא)</h3><div class="meta">דקה קריאה</div></div></div>
+    <p><b>Career Ops</b> הוא פרויקט קוד פתוח (רישיון MIT) שרץ בתוך <b>Claude Code</b>, הכלי של Anthropic שבו מדברים עם Claude בטרמינל. מדביקים לו קישור למשרה, והוא:</p>
+    <ul class="checks">
+      <li>בודק אם המשרה אמיתית ועדיין פתוחה, ומסמן משרות רפאים</li>
+      <li>נותן ציון התאמה מ-1 עד 5 מול קורות החיים <b>שלכם</b>, עם פירוט פערים</li>
+      <li>מכין קו״ח מותאמים למשרה כ-PDF, וטיוטת מכתב מקדים</li>
+      <li>סורק אתרי קריירה של חברות ומוצא משרות חדשות</li>
+      <li>רושם כל משרה בטבלת מעקב אצלכם במחשב</li>
+    </ul>
+    <p><b>מה הוא לא עושה בגרסה הרשמית:</b></p>
+    <ul class="checks nots">
+      <li>לא מגיש מועמדות בשמכם. הוא ממלא ומכין, ואתם לוחצים ״שלח״.</li>
+      <li>לא שולח מיילים או הודעות. הכול נשאר כטיוטה.</li>
+      <li>לא ממציא ניסיון: מנסח מחדש רק מה שכתוב בקו״ח שלכם.</li>
+    </ul>
+    <button class="done-btn" type="button">סמנו שסיימתי</button>
+  </article>
+
+  <article class="step" id="needs" data-step="needs" data-track="basic">
+    <div class="step-h"><span class="num">2</span><div><h3>מה צריך לפני שמתחילים</h3><div class="meta">5–10 דקות אם חסר משהו</div></div></div>
+    <div class="grid2">
+      <div class="mini"><h4>💻 מחשב וטרמינל</h4><p>ההתקנה נעשית במחשב, לא בטלפון. נבדק על Mac (פתיחת טרמינל: <kbd>⌘</kbd>+<kbd>Space</kbd>, מקלידים Terminal). ל-Windows יש <a href="https://github.com/career-ops-hq/career-ops/blob/main/docs/WINDOWS.md" target="_blank" rel="noopener">הוראות רשמיות</a>.</p></div>
+      <div class="mini"><h4>🔧 Git</h4><p>ההתקנה מורידה את הפרויקט דרך git, ונעצרת בלעדיו. ב-Mac, אם חסר, הפקודה <code>git --version</code> תציע להתקין אותו. אחרת: <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git-scm.com</a>.</p></div>
+      <div class="mini"><h4>🟢 Node.js גרסה 22 ומעלה</h4><p>הגרסה הנוכחית (1.36.0) דורשת Node 22.13 לפחות. מורידים מ-<a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> (גרסת LTS).</p></div>
+      <div class="mini"><h4>🤖 Claude Code</h4><p>דורש מנוי Claude בתשלום או מפתח API. הוראות התקנה ב-<a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">code.claude.com/docs/en/setup</a>. בהרצה הראשונה של <code>claude</code> תתבקשו להתחבר לחשבון בדפדפן.</p></div>
+      <div class="mini"><h4>📄 קורות חיים</h4><p>טקסט להדבקה, או קישור ללינקדאין, או פשוט לספר לו על הניסיון שלכם.</p></div>
+    </div>
+    <p>בדקו שהכול מותקן. כל פקודה צריכה להחזיר מספר גרסה:</p>
+    <div class="cmd"><code>node -v
+git --version
+claude --version</code><button class="copy" type="button">העתקה</button></div>
+    <div class="note"><b>אין לכם Claude Code?</b>Career Ops עובד גם עם כלים אחרים (Codex, Gemini, OpenCode ועוד), ויש אפילו מסלול חינמי. פירוט ב-<a href="https://github.com/career-ops-hq/career-ops/blob/main/docs/FREE_TIER.md" target="_blank" rel="noopener">FREE_TIER.md</a>. המדריך הזה בודק רק את Claude Code.</div>
+    <button class="done-btn" type="button">סמנו שסיימתי</button>
+  </article>
+
+  <article class="step" id="install" data-step="install" data-track="basic">
+    <div class="step-h"><span class="num">3</span><div><h3>התקנה: פקודה אחת</h3><div class="meta">פחות מדקה בהרצה שלנו</div></div></div>
+    <p><b>א.</b> פתחו טרמינל בתיקייה שבה תרצו את הפרויקט, והריצו:</p>
+    <div class="cmd"><code>npx @santifer/career-ops init</code><button class="copy" type="button">העתקה</button></div>
+    <p>תופיע שאלה <code>Ok to proceed? (y)</code>. הקלידו <kbd>y</kbd> ו-<kbd>Enter</kbd>.</p>
+    <figure><button type="button"><img src="assets/01-install.png" width="520" height="120" alt="הטרמינל שואל Ok to proceed אחרי הפקודה npx @santifer/career-ops init" loading="lazy"></button><figcaption>השאלה היחידה שההתקנה שואלת</figcaption></figure>
+    <p>ההתקנה מורידה את הפרויקט לתיקייה <code>career-ops</code> ומתקינה את מה שצריך, כולל דפדפן ליצירת קבצי PDF. בסוף יופיע <code>✓ career-ops is ready</code>.</p>
+    <p><b>ב.</b> נכנסים לתיקייה ופותחים את Claude:</p>
+    <div class="cmd"><code>cd career-ops
+claude</code><button class="copy" type="button">העתקה</button></div>
+    <p><b>ג.</b> Claude ישאל אם אתם סומכים על התיקייה. <b>שימו לב:</b> ברירת המחדל היא <code>No, exit</code>. לחצו <kbd>↓</kbd> כדי לבחור <code>Yes, I trust this folder</code>, ואז <kbd>Enter</kbd>.</p>
+    <figure><button type="button"><img src="assets/02-trust.png" width="1132" height="395" alt="חלון אישור התיקייה של Claude Code, הסמן על No, exit" loading="lazy"></button><figcaption>Enter מיד = יציאה. קודם חץ למטה.</figcaption></figure>
+    <div class="note warn"><b>נראה מפחיד אבל תקין</b>במהלך ההתקנה יופיע טקסט ארוך על <code>detached HEAD</code>, ובסוף שורה שממליצה להריץ <code>npx playwright install chromium</code>. אלה לא שגיאות, ואין צורך להריץ את השורה הזאת: הדפדפן כבר הותקן.</div>
+    <button class="done-btn" type="button">סמנו שסיימתי</button>
+  </article>
+
+  <article class="step" id="first" data-step="first" data-track="basic">
+    <div class="step-h"><span class="num">4</span><div><h3>הרצה ראשונה: מדביקים משרה</h3><div class="meta">כ-2 דקות הגדרה, ועוד כ-3 דקות להערכה</div></div></div>
+    <p>Claude נפתח עם שורה ריקה. <b>הוא לא יתחיל לבד</b>, צריך לכתוב לו משהו. הדביקו קישור למשרה אמיתית שחשבתם להגיש אליה, למשל:</p>
+    <div class="cmd"><code>https://job-boards.greenhouse.io/company/jobs/123456</code><button class="copy" type="button">העתקה</button></div>
+    <p>בפעם הראשונה הוא <b>עוצר ומבקש להכיר אתכם</b>. הוא שומר את הקישור וממשיך אליו לבד בסוף ההגדרה:</p>
+    <figure><button type="button"><img src="assets/03-onboarding.png" width="1132" height="610" alt="Career Ops מבקש קורות חיים, שם ומייל, מיקום, תפקידי יעד, טווח שכר ורמת הוצאה" loading="lazy"></button><figcaption>מה הוא מבקש: קו״ח, שם ומייל, מיקום, תפקידי יעד, טווח שכר ורמת הוצאה</figcaption></figure>
+    <p>אפשר לענות על הכול בהודעה אחת. מלאו את הסוגריים והדביקו:</p>
+    <div class="prompt">
+      <div class="prompt-h"><b>📋 תשובה לשאלות ההיכרות</b><button class="copy" type="button">העתקת פרומפט</button></div>
+<pre>Option 1, here's my CV:
+[paste your CV text here]
+
+Profile: [Full name], [email], [city] (Israel time).
+Targeting [role 1] / [role 2] roles, [hybrid / remote / on-site] in [city].
+Salary target [range] ILS/month gross.
+Spend: standard.</pre>
+    </div>
+    <div class="note"><b>על רמת ההוצאה</b><code>economy</code> הכי זול ומהיר, <code>standard</code> מאוזן (ברירת מחדל), <code>premium</code> המודל הכי חזק. זה משפיע על צריכת המנוי שלכם.</div>
+    <div class="note"><b>אישורי פעולות</b>Claude Code עשוי לבקש אישור לפני שהוא כותב קבצים או מחפש ברשת. בחרו <code>Yes</code>. מצב ההרשאות מוחלף ב-<kbd>Shift</kbd>+<kbd>Tab</kbd>. בהרצה שלנו החשבון התחיל במצב אוטומטי, כך שלא הופיעו שאלות. אם החשבון שלכם מתחיל במצב ידני, תראו כמה שאלות כאלה.</div>
+    <p>הוא כותב לבד את <code>cv.md</code>, את קובץ הפרופיל ואת רשימת החברות לסריקה, ואז מתחיל להעריך את המשרה.</p>
+    <button class="done-btn" type="button">סמנו שסיימתי</button>
+  </article>
+
+  <article class="step" id="results" data-step="results" data-track="basic">
+    <div class="step-h"><span class="num">5</span><div><h3>מה מקבלים בסוף</h3><div class="meta">הכול נשמר אצלכם במחשב</div></div></div>
+    <div class="grid2">
+      <div class="mini"><h4>📊 דוח הערכה</h4><p>בתיקייה <code>reports/</code>: התאמה לכל דרישה, פערים, הערכת שכר, תוכנית לראיון, בדיקת אמינות המשרה, ציון מתוך 5 וטיוטת מכתב מקדים.</p></div>
+      <div class="mini"><h4>📄 קו״ח מותאמים</h4><p>בתיקייה <code>output/</code>: PDF של עמוד אחד, שמדגיש את מה שרלוונטי למשרה בלי להוסיף טענות חדשות.</p></div>
+      <div class="mini"><h4>🗂️ שורה בטבלת המעקב</h4><p>בקובץ <code>data/applications.md</code>, בסטטוס <code>Evaluated</code>. כלום לא נשלח.</p></div>
+      <div class="mini"><h4>🙋 שאלת כנות</h4><p>אם חסר משהו בקו״ח, הוא שואל אתכם. בהרצה שלנו: ״השתמשת בכלי AI בעבודה? אם לא, לא אוסיף את זה.״</p></div>
+    </div>
+    <figure class="paper"><button type="button"><img src="assets/04-cv.png" width="595" height="842" alt="קורות חיים מותאמים בעמוד אחד שנוצרו להרצת הדוגמה" loading="lazy"></button><figcaption>קו״ח מותאמים מההרצה שלנו (דמות בדויה)</figcaption></figure>
+    <figure><button type="button"><img src="assets/05-tracker.png" width="1132" height="345" alt="רשימת הקבצים שנוצרו ושורה ראשונה בטבלת המעקב בסטטוס Evaluated" loading="lazy"></button><figcaption>הקבצים שנוצרו ושורה #1 בטבלת המעקב</figcaption></figure>
+    <div class="note ok"><b>הכלל של הפרויקט</b>מתחת לציון 4.0 הוא ימליץ לא להגיש. אפשר להתעלם מההמלצה, והוא יציין שעשיתם זאת.</div>
+    <button class="done-btn" type="button">סמנו שסיימתי</button>
+  </article>
+
+  <article class="step" id="daily" data-step="daily" data-track="basic">
+    <div class="step-h"><span class="num">6</span><div><h3>שימוש יומיומי: הפקודות שצריך</h3><div class="meta">הקלידו בתוך Claude</div></div></div>
+    <div class="cmds">
+      <div class="cmdrow"><code>/career-ops</code><span>תפריט כל הפקודות</span></div>
+      <div class="cmdrow"><code style="direction:rtl">[קישור למשרה]</code><span>הערכה מלאה: דוח, PDF ושורה במעקב</span></div>
+      <div class="cmdrow"><code>/career-ops scan</code><span>סריקת אתרי הקריירה מהרשימה ב-<code>portals.yml</code></span></div>
+      <div class="cmdrow"><code>/career-ops pipeline</code><span>עיבוד המשרות שממתינות בתור</span></div>
+      <div class="cmdrow"><code>/career-ops apply</code><span>עזרה במילוי טופס הגשה. את ״שלח״ אתם לוחצים.</span></div>
+      <div class="cmdrow"><code>/career-ops cover</code><span>מכתב מקדים</span></div>
+      <div class="cmdrow"><code>/career-ops deep</code><span>מחקר מעמיק על החברה</span></div>
+      <div class="cmdrow"><code>/career-ops contacto</code><span>איתור איש קשר וטיוטת הודעה בלינקדאין</span></div>
+      <div class="cmdrow"><code>/career-ops interview-prep</code><span>הכנה לראיון בחברה מסוימת</span></div>
+      <div class="cmdrow"><code>/career-ops tracker</code><span>סטטוס כל המועמדויות</span></div>
+    </div>
+    <p>ובטרמינל רגיל, מתוך התיקייה <code>career-ops</code>:</p>
+    <div class="cmd"><code><span class="c"># בדיקה שההתקנה וההגדרות תקינות</span>
+npm run doctor</code><button class="copy" type="button">העתקה</button></div>
+    <div class="cmd"><code><span class="c"># אחרי שהגשתם בעצמכם: עדכון שורה 1 ל-Applied</span>
+node set-status.mjs 1 Applied</code><button class="copy" type="button">העתקה</button></div>
+    <div class="note"><b>טיפ: דברו איתו</b>״הציון גבוה מדי״, ״פספסת את הניסיון שלי ב-X״, ״אני לא רוצה משרות במשרד 5 ימים״: הוא מעדכן את הפרופיל שלכם ומשתפר עם כל הערכה.</div>
+    <button class="done-btn" type="button">סמנו שסיימתי</button>
+  </article>
+
+  <div class="next"><a href="#flow">ראו את התהליך המלא ←</a></div>
+</section>
+
+<!-- ============ FLOW ============ -->
+<section class="part wrap" id="flow">
+  <div class="part-head">
+    <span class="eyebrow">התהליך המלא</span>
+    <h2>מקורות חיים ← משרות ← התאמה ← הגשה ← מעקב</h2>
+    <p>מה הגרסה הרשמית עושה בכל שלב, ומה הוספתי אצלי.</p>
+  </div>
+  <div class="flow">
+    <div class="node"><div class="k">1</div><h4>קורות חיים</h4>
+      <div class="row"><b><span class="tag ok">רשמי</span></b>שיחת היכרות יוצרת את <code>cv.md</code> ואת הפרופיל. הוא לומד מכל תיקון שלכם.</div>
+      <div class="row"><b><span class="tag mine">אצלי</span></b>כללי עובדות קשיחים: מספרים מותרים ואסורים לכל פרויקט.</div></div>
+    <div class="node"><div class="k">2</div><h4>איתור משרות</h4>
+      <div class="row"><b><span class="tag ok">רשמי</span></b><code>/career-ops scan</code> סורק אתרי קריירה ומוסיף משרות חדשות לתור.</div>
+      <div class="row"><b><span class="tag mine">אצלי</span></b><a href="#f-scan">סריקה יומית אחת</a> מכל המקורות, כולל <a href="#f-wa">וואטסאפ</a> ולינקדאין.</div></div>
+    <div class="node"><div class="k">3</div><h4>התאמה</h4>
+      <div class="row"><b><span class="tag ok">רשמי</span></b>דוח מלא, ציון מתוך 5, בדיקת אמינות המשרה וקו״ח מותאמים.</div>
+      <div class="row"><b><span class="tag mine">אצלי</span></b><a href="#f-conf">ציר ״סיכוי״ נפרד</a> לדרישות סף, ו<a href="#f-il">כיול לשוק הישראלי</a>.</div></div>
+    <div class="node"><div class="k">4</div><h4>הגשה</h4>
+      <div class="row"><b><span class="tag ok">רשמי</span></b><code>/career-ops apply</code> ממלא את הטופס ועוצר. אתם מגישים.</div>
+      <div class="row"><b><span class="tag mine">אצלי</span></b><a href="#f-apply">הגשה אוטומטית</a> עם עצירות חובה, עד 10 ביום.</div></div>
+    <div class="node"><div class="k">5</div><h4>מעקב</h4>
+      <div class="row"><b><span class="tag ok">רשמי</span></b>טבלה ב-<code>data/applications.md</code>, עדכון סטטוס ומניעת כפילויות.</div>
+      <div class="row"><b><span class="tag mine">אצלי</span></b><a href="#f-gmail">סנכרון מג׳ימייל</a> ו<a href="#f-guard">הגנות</a> נגד סטטוס שחוזר אחורה.</div></div>
+  </div>
+  <p class="swipe">← החליקו לשלבים הבאים</p>
+</section>
+
+<!-- ============ TRACK 2 ============ -->
+<section class="part wrap" id="pro">
+  <div class="part-head">
+    <span class="eyebrow">מסלול 2 · כל היכולות של הסוכן שלי</span>
+    <h2>מה הוספתי ל-Career Ops, ואיך לבנות את זה אצלכם</h2>
+    <p>את כל אלה בניתי על בסיס Career Ops כדי לחפש עבודה בישראל. לכל יכולת: איזו בעיה היא פותרת, איך אני משתמשת בה, מגבלות, פרומפט להעתקה ודרך לבדוק שזה עובד.</p>
+  </div>
+
+  <div class="note mine"><b>חשוב לדעת לפני שמתחילים</b>
+    <ul>
+      <li><b>אלה לא חלק מהגרסה הרשמית.</b> הקוד שלי פרטי ולא מפורסם. מה שתקבלו כאן הוא <b>פרומפט</b> שמבקש מ-Claude לבנות יכולת דומה בהתקנה שלכם.</li>
+      <li><b>הפרומפטים נבדקו רק בבדיקות בסיסיות</b> על התקנה נקייה של 1.36.0: Claude בנה מהם משהו שעובד. הוא יבנה אצלכם גרסה משלו, ולא נבדקו מול ג׳ימייל, וואטסאפ והגשה אמיתית. תמיד הריצו קודם את שלב הבדיקה. בנוסף, Claude לפעמים עורך קבצי מערכת של Career Ops, ועדכון עתידי עלול לדלג עליהם או להתנגש בהם. אם הוא מציע לערוך קובץ מחוץ ל-<code>modes/_custom.md</code> ול-<code>modes/_profile.md</code>, בקשו קובץ חדש במקום.</li>
+      <li>קודם סיימו את <a href="#basic">מסלול 1</a>: כל יכולת כאן נשענת על התקנה עובדת.</li>
+      <li>הפרומפטים באנגלית כי שמות הקבצים והפקודות באנגלית. Claude מבין גם עברית.</li>
+    </ul>
+  </div>
+
+  <details class="feat" id="f-scan" data-step="f-scan" data-track="pro">
+    <summary><span class="ficon">🔭</span><span class="ftxt"><span class="tag mine">תוספת שלי</span><h3>סריקה יומית אחת מכל המקורות</h3><p>פקודה אחת אוספת משרות מכל מקום, מסננת ומדווחת</p></span><span class="chev">⌄</span></summary>
+    <div class="fbody">
+      <h4>הבעיה</h4>
+      <p>בגרסה הרשמית כל מקור עובד בנפרד: סריקת אתרי קריירה, חיפוש בלינקדאין, חיפוש ברשת. הייתי מריצה כמה כלים, מקבלת כפילויות ומפספסת משרות.</p>
+      <h4>מה זה עושה</h4>
+      <p>פקודה אחת אוספת משרות חדשות מכל המקורות: אתרי קריירה של חברות, לוחות משרות, חיפוש פומבי בלינקדאין, חיפוש ברשת, הפיד בלינקדאין וקבוצות וואטסאפ. אחר כך היא מסננת מול טבלת המעקב: כפילויות, חברות שאני כבר בתהליך מולן, ותקופת צינון אחרי דחייה. מה שעובר נכנס לתור, ובסוף מודפס דוח קצר אחד.</p>
+      <h4>איך אני משתמשת</h4>
+      <p>פעם ביום, ואחר כך <code>/career-ops pipeline</code> על מה שנכנס לתור. כל המקורות רק קוראים. רק שלב אחד, הסינון, כותב לקבצים, ותמיד עם גיבוי. מקור שנכשל מסומן בדוח, ושאר המקורות ממשיכים.</p>
+      <h4>מגבלות</h4>
+      <ul><li>הסריקה רק <b>מוצאת</b> משרות. היא לא מעריכה ולא מגישה.</li><li>מקורות שעוברים דרך דפדפן (לינקדאין, וואטסאפ) איטיים וכבדים, ותלויים בזה שאתם מחוברים.</li><li>לינקדאין לפעמים חוסם בקשות. במקרה כזה המקור מסומן ״לא זמין״.</li></ul>
+      <div class="prompt">
+        <div class="prompt-h"><b>📋 פרומפט: סריקה יומית</b><button class="copy" type="button">העתקת פרומפט</button></div>
+<pre>I use career-ops. Build me one daily scan command on top of the existing scanner (scan.mjs + portals.yml). Show me the design before writing code.
+
+Requirements:
+1. One entry point: node daily-scan.mjs, with --dry-run that writes nothing under data/.
+2. Sources: the existing portals.yml ATS scan, plus these extra sources: [list the job boards / searches you want]. Every source is read-only and reports complete / partial / failed. One failing source never stops the others.
+3. One writer: only a final triage step may append to data/pipeline.md and data/scan-history.tsv, under a file lock, with a backup and an atomic write.
+4. Triage against data/applications.md: drop duplicates (same URL, or same company + role), drop companies where I'm in an active process, and respect a cooldown after a rejection ([60] days).
+5. Print one short report and also save it to output/daily-scan/.
+6. My settings go in a config file in the user layer. Put new code in new files; avoid editing upstream files like scan.mjs, and tell me if you must. Add tests with fixtures that never touch my live data.</pre>
+        <button class="more" type="button">הצגת הפרומפט המלא</button>
+      </div>
+      <h4>✅ איך בודקים שזה עובד</h4>
+      <p>הריצו <code>node daily-scan.mjs --dry-run</code>. אמור להופיע דוח עם מצב כל מקור, ושום קובץ ב-<code>data/</code> לא אמור להשתנות. בקשו מ-Claude להראות לכם שתאריכי השינוי של הקבצים לא זזו.</p>
+      <button class="done-btn" type="button">סמנו שסיימתי</button>
+    </div>
+  </details>
+
+  <details class="feat" id="f-wa" data-step="f-wa" data-track="pro">
+    <summary><span class="ficon">💬</span><span class="ftxt"><span class="tag mine">תוספת שלי</span><h3>משרות מקבוצות וואטסאפ</h3><p>קורא קבוצות משרות שאתם חברים בהן, בלי לשלוח ובלי לשמור מידע אישי</p></span><span class="chev">⌄</span></summary>
+    <div class="fbody">
+      <h4>הבעיה</h4>
+      <p>בישראל הרבה משרות טובות, במיוחד דרך חבר מביא חבר, מתפרסמות קודם בקבוצות וואטסאפ. הן לא מגיעות לשום סורק, ובקבוצה פעילה הן נקברות תוך שעות.</p>
+      <h4>מה זה עושה</h4>
+      <p>מקור נוסף בסריקה היומית. הוא פותח את וואטסאפ ווב בכרום שלי, דרך התוסף <b>Claude in Chrome</b>, ועובר <b>רק</b> על הקבוצות שהגדרתי בשמן המדויק. הוא קורא את ההודעות מאז הקריאה המלאה האחרונה ושולף מהן רק פרטי משרה: חברה, תפקיד, מיקום, קישור ומועד פרסום. משרה שהחברה בה מוסתרת או שאין לה קישור לא מנוחשת. היא עוברת לרשימה לבדיקה ידנית.</p>
+      <h4>איך אני משתמשת</h4>
+      <p>היא רצה כחלק מהסריקה היומית. אם הקריאה לא הושלמה (לא מחובר, ההיסטוריה לא נטענה עד תחילת החלון), <b>כל תוצאות וואטסאפ של אותה ריצה נפסלות</b>. הדוח אומר את זה במפורש, והפעם הבאה מתחילה מהנקודה החסרה. אין שימוש בנתונים חלקיים.</p>
+      <h4>כללי פרטיות (חובה)</h4>
+      <ul><li>רק קבוצות שאתם חברים בהן ורשאים לקרוא, ובהתאם לכללי הקבוצה ולתנאי השימוש של וואטסאפ.</li><li>קריאה בלבד: לא שולחים, לא מגיבים ולא לוחצים על קישורים.</li><li>לא שומרים שמות, מספרי טלפון או תוכן הודעות של חברי הקבוצה. נשמרים רק פרטי המשרה.</li><li>שמות הקבוצות נשמרים רק בקובץ הגדרות פרטי שלכם.</li></ul>
+      <h4>מגבלות</h4>
+      <ul><li>״קריאה בלבד״ נאכף דרך ההוראות וההרשאות שהסוכן מקבל, לא טכנית. לכן עוקבים אחרי הריצות הראשונות.</li><li>לשונית וואטסאפ צורכת הרבה זיכרון, וזה המקור האיטי ביותר.</li><li>קישור שמזהה המשרה בו נמצא אחרי ה-<code>?</code> מאבד אותו בדרך.</li></ul>
+      <div class="prompt">
+        <div class="prompt-h"><b>📋 פרומפט: מקור וואטסאפ</b><button class="copy" type="button">העתקת פרומפט</button></div>
+<pre>Add a read-only WhatsApp source to my career-ops daily scan, for job-referral groups I am a member of. Show me the design before writing code.
+
+Hard rules:
+1. Read only. Never send, react, forward, or click links inside WhatsApp.
+2. Only the groups I list by exact name in a private config file in the user layer. Ignore every other chat.
+3. Use the Claude in Chrome browser tools in my own logged-in WhatsApp Web tab. No separate login, no stored credentials.
+4. Read only messages since the last complete read (first run: last 24 hours).
+5. Extract job leads only: company, title, location, link, post time. Never store message authors, phone numbers, or other members' text.
+6. If the read is incomplete (not logged in, a group missing, history didn't load back to the window start), exclude WhatsApp from this run entirely, say so at the top of the report, and don't advance the "last read" marker.
+7. A lead with a hidden company or no link is never guessed: put it in a review list (data/unresolved-leads.tsv).
+8. Leads go through the same triage as every other source (duplicates, cooldown, filters).</pre>
+        <button class="more" type="button">הצגת הפרומפט המלא</button>
+      </div>
+      <h4>✅ איך בודקים שזה עובד</h4>
+      <p>התחילו בקבוצה אחת ובהרצת ניסיון (<code>--dry-run</code>). השוו ידנית 3–4 משרות מהקבוצה למה שהדוח מצא, וודאו שבקבצים שנוצרו אין שמות או מספרי טלפון. אחר כך התנתקו מוואטסאפ ווב והריצו שוב. הדוח צריך להראות שוואטסאפ נכשל, ושאר המקורות צריכים להמשיך כרגיל.</p>
+      <button class="done-btn" type="button">סמנו שסיימתי</button>
+    </div>
+  </details>
+
+  <details class="feat" id="f-apply" data-step="f-apply" data-track="pro">
+    <summary><span class="ficon">🚀</span><span class="ftxt"><span class="tag mine">תוספת שלי</span><h3>הגשה אוטומטית</h3><p>מגיש לבד למשרות שעברו את הסף, ועוצר בכל מקום שדורש החלטה שלכם</p></span><span class="chev">⌄</span></summary>
+    <div class="fbody">
+      <div class="note bad"><b>הגרסה הרשמית לא תומכת בזה, בכוונה</b>Career Ops בנוי כך שהוא לעולם לא מגיש בשמכם. זה עיקרון של הפרויקט. אצלי זו החלטה שקיבלתי במודע והגדרתי רק בקבצים האישיים שלי. אם תפעילו את זה: <b>האחריות שלכם</b>, כולל לתנאי השימוש של כל אתר משרות. חלק מהאתרים אוסרים הגשה אוטומטית.</div>
+      <h4>הבעיה</h4>
+      <p>אחרי שהסוכן מעריך 30 משרות ומכין קו״ח לכל אחת, מילוי ידני של 10 טפסים ביום הופך לצוואר הבקבוק.</p>
+      <h4>מה זה עושה</h4>
+      <p>כשמעבדים את התור, משרות שעברו את סף הציון שלי מוגשות אוטומטית. קודם הטובות ביותר, ועד יעד של 10 הגשות ביום. אם אין מספיק משרות מעל הסף, הוא משלים ממשרות שקיבלו 3.5 ומעלה, ולא יורד מתחת לזה. לפני כל הגשה הוא בודק שוב את טבלת המעקב (כבר הגשתי? אני בתהליך מולם? בתקופת צינון?), ומצרף רק את הקו״ח שהוכנו למשרה הזאת.</p>
+      <h4>מתי הוא עוצר ומעביר אליי</h4>
+      <ul class="checks nots"><li>CAPTCHA</li><li>יצירת חשבון או הזנת סיסמה</li><li>תיבות הסכמה והצהרות זהות וולונטריות</li><li>שאלה שהתשובה עליה לא מופיעה בקבצים שלי</li><li>כל דבר שדורש שיקול דעת שלי</li></ul>
+      <p>משרה שנעצרה לא נספרת. היא נרשמת עם הסיבה המדויקת, והוא ממשיך למשרה הבאה. בסוף הוא מציג דוח: כמה הוגשו מתוך 10, כמה נעצרו ולמה. הגשה נספרת <b>רק אחרי שמופיע דף אישור</b>, ורק אז השורה במעקב עוברת ל-<code>Applied</code>.</p>
+      <h4>מגבלות</h4>
+      <ul><li>טפסים מורכבים נשברים לפעמים, ולכן יש עצירה ודיווח.</li><li>זה כלי לכמות שמכבד איכות, לא תחליף לבדיקה: אני עדיין עוברת על קו״ח ועל תשובות.</li><li>זה דורש כלי דפדפן ש-Claude שולט בו. לפני הפעלה בדקו מה כל אתר מתיר.</li></ul>
+      <div class="prompt">
+        <div class="prompt-h"><b>📋 פרומפט: הגשה אוטומטית</b><button class="copy" type="button">העתקת פרומפט</button></div>
+<pre>I explicitly authorize career-ops to submit applications for me, in the pipeline workflow only. I understand upstream career-ops never submits on its own and that this is my choice and my responsibility. Write these rules to modes/_custom.md only, which pipeline mode already loads. Do not edit modes/pipeline.md, modes/_shared.md or any other system file, because updates overwrite them. Show me the plan first.
+
+Rules:
+1. Start in REHEARSAL mode: fill every form and STOP before Submit, until I write "rehearsal off".
+2. Only jobs already in my pipeline that score at or above my apply threshold, best score first. Daily cap: [10]. Never scan for more jobs to hit the cap.
+3. Right before each submit, re-check data/applications.md for this company. Skip if I already applied to this role, I'm in an active process there, or it's inside the cooldown.
+4. Attach only the CV generated for this posting. Never reuse another one.
+5. Answer only from cv.md, config/profile.yml and modes/_profile.md. If a required answer isn't there, don't guess: hand the job back to me.
+6. STOP and hand back (never bypass) on: CAPTCHA, account creation or password, consent / EEO / self-identification boxes, e-signatures, or any judgment call. Respect each site's terms; if a site disallows automated applications, skip it.
+7. Count a submission only after a confirmation page appears. Then run node set-status.mjs --report &lt;report#&gt; Applied.
+8. A blocked job is logged with its exact reason and the run continues with the next one.
+9. End with a report: submitted N/[10], blocked jobs and reasons, what's still pending.</pre>
+        <button class="more" type="button">הצגת הפרומפט המלא</button>
+      </div>
+      <h4>✅ איך בודקים שזה עובד</h4>
+      <p>במצב חזרה (rehearsal) הריצו על משרה אחת ובדקו בעצמכם כל שדה שמולא. אחר כך נסו להריץ על משרה שכבר מסומנת ב-<code>Applied</code>: הוא חייב לדלג עליה. רק אחרי שהכול נראה נכון כתבו <code>rehearsal off</code>, והתחילו עם תקרה של 1–2 הגשות ביום.</p>
+      <button class="done-btn" type="button">סמנו שסיימתי</button>
+    </div>
+  </details>
+
+  <details class="feat" id="f-gmail" data-step="f-gmail" data-track="pro">
+    <summary><span class="ficon">📬</span><span class="ftxt"><span class="tag mine">תוספת שלי</span><h3>סנכרון טבלת המעקב מג׳ימייל</h3><p>דחיות, שיחות וזימונים מתעדכנים לבד, בקריאה בלבד</p></span><span class="chev">⌄</span></summary>
+    <div class="fbody">
+      <h4>הבעיה</h4>
+      <p>תשובות מחברות מגיעות למייל, וטבלת המעקב מתיישנת. אחרי שבוע כבר לא ברור מי דחה, מי התקשר ועם מי יש ראיון מחר.</p>
+      <h4>מה זה עושה</h4>
+      <p>פקודה אחת קוראת את ג׳ימייל דרך מחבר Gmail של Claude, מהיום שלפני הסנכרון הקודם ועד היום, כולל דואר יוצא כדי לאמת מה באמת נשלח. כל מייל מסווג: דחייה, שיחה ממגייס, שלב סינון או משרה חדשה. השורה המתאימה במעקב מתעדכנת עם תאריך ומקור. בסוף הוא מציג טבלת שינויים ורשימה של שיחות וראיונות ב-48 השעות הקרובות.</p>
+      <h4>איך אני משתמשת</h4>
+      <p>בבוקר, לפני הסריקה היומית. סטטוס זז רק קדימה. סטטוס סופי (נדחה, ויתרתי, SKIP) לא נפתח מחדש אוטומטית: אם נראה שמשהו חזר לחיים, הוא מדווח לי ואני מחליטה.</p>
+      <h4>מגבלות</h4>
+      <ul><li>צריך לחבר את Gmail כמחבר בחשבון Claude שלכם.</li><li>הסיווג נעשה על ידי AI. מיילים עמומים לפעמים מסווגים לא נכון, אז עברו על טבלת השינויים.</li><li>הוא אף פעם לא שולח, לא עונה ולא יוצר טיוטות.</li></ul>
+      <div class="note"><b>בגרסה הרשמית יש חלופה</b><code>/career-ops reply-watch</code> מסווג תשובות ומציע עדכונים, דרך תוסף Gmail (צריך להגדיר מפתחות) או דרך הדבקה ידנית של מייל. הגרסה שלי פשוטה יותר ורצה דרך המחבר של Claude.</div>
+      <div class="prompt">
+        <div class="prompt-h"><b>📋 פרומפט: סנכרון מג׳ימייל</b><button class="copy" type="button">העתקת פרומפט</button></div>
+<pre>Create a project skill at .claude/skills/reconcile/SKILL.md that reconciles my Gmail with data/applications.md. Read-only on Gmail.
+
+1. Read the date in data/last-reconciliation.txt (if the file is missing, this is the first run: use the last 14 days). Search Gmail through the Gmail connector from one day BEFORE that date (overlap window). If the connector isn't available, stop and tell me.
+2. Also read sent mail for the same window, to confirm which applications and replies actually went out.
+3. Classify each relevant email: rejection / recruiter call / screening step / new posting.
+4. Update matching tracker rows with date and source, using node set-status.mjs. Statuses only move forward (Evaluated → Applied → Responded → Interview → Offer). Rejected / Discarded / SKIP are terminal: if new evidence seems to reopen one, report it to me and don't change it.
+5. NEVER send, reply, or create drafts.
+6. Output a table of changes, then calls and interviews in the next 48 hours.
+7. On success, write today's date to data/last-reconciliation.txt.</pre>
+        <button class="more" type="button">הצגת הפרומפט המלא</button>
+      </div>
+      <h4>✅ איך בודקים שזה עובד</h4>
+      <p>הריצו <code>/reconcile</code> ובדקו מול תיבת הדואר 2–3 שורות מטבלת השינויים. אחר כך בדקו ב-Gmail שלא נוצרה אף טיוטה או תשובה, ושהקובץ <code>data/last-reconciliation.txt</code> מכיל את התאריך של היום.</p>
+      <button class="done-btn" type="button">סמנו שסיימתי</button>
+    </div>
+  </details>
+
+  <details class="feat" id="f-conf" data-step="f-conf" data-track="pro">
+    <summary><span class="ficon">🎯</span><span class="ftxt"><span class="tag mine">תוספת שלי</span><h3>ציון התאמה ≠ סיכוי לעבור סינון</h3><p>דרישות סף שחסרות לכם מקבלות ציר נפרד, בלי להוריד את הציון</p></span><span class="chev">⌄</span></summary>
+    <div class="fbody">
+      <h4>הבעיה</h4>
+      <p>משרה מצוינת עם דרישה אחת שחסרה לי (למשל תואר) קיבלה ציון נמוך ונעלמה מהרשימה. אבל הרבה מודעות בישראל מבקשות תואר מתוך הרגל, ומגייסות גם בלעדיו.</p>
+      <h4>מה זה עושה</h4>
+      <p>בכל הערכה מופיעה טבלה של <b>דרישות סף שלא עומדים בהן</b>, ושורה נפרדת: <code>Confidence: High / Moderate / Low</code>. הציון עונה על השאלה ״כמה המשרה טובה בשבילי?״, והסיכוי עונה על השאלה ״מה עלול לסנן אותי לפני שאדם יקרא?״. דרישה חסרה מורידה את הסיכוי, לא את הציון, ואף פעם לא פוסלת משרה לבד.</p>
+      <h4>איך אני משתמשת</h4>
+      <p>ציון גבוה עם סיכוי נמוך אומר שכדאי לחפש הפניה מבפנים ולא להגיש דרך הטופס.</p>
+      <div class="prompt">
+        <div class="prompt-h"><b>📋 פרומפט: ציר סיכוי</b><button class="copy" type="button">העתקת פרומפט</button></div>
+<pre>Change how my evaluations treat hard requirements. Write this to modes/_profile.md (user layer), not to system files:
+
+1. In every evaluation, add a table "Hard requirement mismatches": each requirement the JD states as mandatory that I don't meet (degree, years, language, clearance, location, work authorization), with the JD's wording.
+2. Add one line: "Confidence: High / Moderate / Low — N hard requirement mismatch(es)", based only on that table.
+3. Never lower the score because of a mismatch, and never auto-skip a role because of one. A strong role with one mismatch stays a strong role with lower confidence.
+4. A degree requirement I don't meet always goes in the table and lowers Confidence, never the Score.
+5. Add the confidence to the report's machine summary too (only the report carries it; scripts and the dashboard don't read it).</pre>
+      </div>
+      <h4>✅ איך בודקים שזה עובד</h4>
+      <p>הדביקו משרה שדורשת משהו שבוודאות אין לכם. בדוח צריכים להופיע הטבלה ושורת <code>Confidence</code>, והציון צריך להיות קרוב לציון של משרה דומה בלי הדרישה.</p>
+      <button class="done-btn" type="button">סמנו שסיימתי</button>
+    </div>
+  </details>
+
+  <details class="feat" id="f-il" data-step="f-il" data-track="pro">
+    <summary><span class="ficon">🇮🇱</span><span class="ftxt"><span class="tag mine">תוספת שלי</span><h3>כיול לשוק הישראלי</h3><p>חברות ישראליות, אזור יוממות, שכר וניסוח שמתאים לכאן</p></span><span class="chev">⌄</span></summary>
+    <div class="fbody">
+      <h4>הבעיה</h4>
+      <p>הגרסה הרשמית לא כוללת כיול לישראל. רשימת החברות שלה ברובה מחו״ל, והיא לא מכירה את המוסכמות כאן: איך להציג שירות צבאי, מה עושים עם ״תואר חובה״, ושלא צריך למכור אזור זמן או ויזה למשרה בתל אביב. בהרצה שלנו הוא כן כייל שכר בשקלים ומיקום בתל אביב, אבל רק מתוך התשובות לשאלות ההיכרות.</p>
+      <h4>מה זה עושה אצלי</h4>
+      <ul><li>מאות חברות ישראליות ברשימת הסריקה, כולל לוחות Comeet ו-Lever.</li><li>אזור יוממות קבוע לסינון מיקום.</li><li>כללי ניסוח: שירות צבאי, תארים וכותרות תפקיד.</li><li>דרישת תואר נכנסת לציר הסיכוי (ראו למעלה), ולא פוסלת משרה.</li></ul>
+      <div class="note"><b>איפה זה נשמר</b>הכול בקבצים האישיים בלבד: <code>portals.yml</code>, <code>modes/_profile.md</code> ו-<code>config/profile.yml</code>. ככה עדכון של Career Ops לא דורס את ההתאמות. זה הכלל של הפרויקט עצמו.</div>
+      <div class="prompt">
+        <div class="prompt-h"><b>📋 פרומפט: כיול לישראל</b><button class="copy" type="button">העתקת פרומפט</button></div>
+<pre>Calibrate career-ops for the Israeli job market. Edit user-layer files only (portals.yml, modes/_profile.md, config/profile.yml), never system files.
+
+1. Add these Israeli companies and their careers pages to portals.yml: [company list]. Then run node verify-portals.mjs and fix or disable entries that don't answer.
+2. Location policy: I can commute to [cities / area]; hybrid or remote is fine for [...]; score anything else lower.
+3. Comp targets: [range] ILS per month gross (mention Keren Hishtalmut and other benefits when relevant).
+4. Framing rules for my CV and answers: how to describe my military service: [your rule]; titles I may and may not use: [...]; for Israel-based roles, don't sell timezone or visa.
+5. Many Israeli JDs list a degree as boilerplate: treat it as a confidence note, never as an automatic skip.
+Show me the diff before saving.</pre>
+        <button class="more" type="button">הצגת הפרומפט המלא</button>
+      </div>
+      <h4>✅ איך בודקים שזה עובד</h4>
+      <p>הריצו <code>/career-ops scan</code> ובדקו שמופיעות משרות מהחברות שהוספתם. הדביקו משרה ישראלית וודאו שהדוח מדבר בשקלים ומתייחס למיקום לפי הכללים שלכם.</p>
+      <button class="done-btn" type="button">סמנו שסיימתי</button>
+    </div>
+  </details>
+
+  <details class="feat" id="f-guard" data-step="f-guard" data-track="pro">
+    <summary><span class="ficon">🛡️</span><span class="ftxt"><span class="tag mine">תוספת שלי</span><h3>הגנות על טבלת המעקב</h3><p>אין הגשה כפולה, וסטטוס לא חוזר אחורה</p></span><span class="chev">⌄</span></summary>
+    <div class="fbody">
+      <h4>הבעיה</h4>
+      <p>כשכמה תהליכים כותבים לאותה טבלה (סריקה, הגשות, סנכרון מייל), שורה יכולה ״לחזור אחורה״, למשל מ-Interview ל-Evaluated. ואז אפשר להגיש פעמיים לאותה משרה. זה קרה לי.</p>
+      <h4>מה זה עושה</h4>
+      <ul><li>בדיקת תקינות שמשווה את הטבלה לתמונת מצב שנשמרת בסוף כל ריצה (ב-Career Ops אין גיבוי אוטומטי של הטבלה) ומתריעה על כל סטטוס שחזר אחורה.</li><li>זיהוי כפילויות לפי חברה <b>וגם</b> תפקיד, שלא מקדם ולא מוריד סטטוס.</li><li>תקופת צינון: 60 יום אחרי דחייה בלי קשר אנושי, 90 יום אחרי שיחה.</li><li>בדיקה חוזרת של הטבלה רגע לפני כל הגשה.</li></ul>
+      <div class="note ok"><b>מה כבר קיים ברשמי</b>הגרסה הרשמית כבר מונעת כפילויות ושומרת את הסטטוס המתקדם בזמן איחוד שורות (<code>npm run verify</code>, <code>node set-status.mjs</code>). ההגנות שלי מוסיפות את ההשוואה לגיבוי ואת תקופת הצינון.</div>
+      <div class="prompt">
+        <div class="prompt-h"><b>📋 פרומפט: הגנות מעקב</b><button class="copy" type="button">העתקת פרומפט</button></div>
+<pre>Harden my career-ops tracker. Put house rules in modes/_custom.md. Prefer new scripts over editing upstream ones (set-status.mjs, update-system.mjs); if an upstream change is unavoidable, show me the diff and add a test first.
+
+1. Statuses only move forward (Evaluated → Applied → Responded → Interview → Offer). Rejected / Discarded / SKIP are terminal.
+2. Add a check I can run after any batch: compare data/applications.md with a snapshot of the tracker (career-ops keeps no tracker backup, so save a snapshot at the end of each run) and list every row whose status moved backwards.
+3. Re-apply cooldown: [60] days after a rejection with no human contact, [90] days after a rejection that followed a real conversation. Scan and apply steps must respect it.
+4. Before any application, re-check the tracker for the same company + role and stop if it's already there.</pre>
+      </div>
+      <h4>✅ איך בודקים שזה עובד</h4>
+      <p>בעותק של הטבלה שנו ידנית שורה מ-<code>Interview</code> ל-<code>Evaluated</code> והריצו את הבדיקה. היא צריכה לתפוס את השינוי. אחר כך בקשו להגיש למשרה שכבר מסומנת <code>Applied</code>: הוא צריך לסרב.</p>
+      <button class="done-btn" type="button">סמנו שסיימתי</button>
+    </div>
+  </details>
+</section>
+
+<!-- ============ TROUBLESHOOTING ============ -->
+<section class="part wrap" id="trouble">
+  <div class="part-head">
+    <span class="eyebrow">עזרה</span>
+    <h2>תקלות נפוצות</h2>
+    <p>כולן מהתקנות אמיתיות שעשינו.</p>
+  </div>
+  <details class="q"><summary><span>הטרמינל כותב <bdi dir="ltr">command not found</bdi> על npx או node</span></summary><div>Node.js לא מותקן. התקינו גרסת LTS מ-<a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a>, סגרו ופתחו מחדש את הטרמינל, ובדקו עם <code>node -v</code>. צריך 22.13 ומעלה.</div></details>
+  <details class="q"><summary><span>ההתקנה נעצרה עם <bdi dir="ltr">git is required</bdi></span></summary><div>git לא מותקן. הריצו <code>git --version</code>: ב-Mac תקפוץ הצעה להתקין, ואחרי ההתקנה הריצו שוב את פקודת ה-<code>npx</code>.</div></details>
+  <details class="q"><summary><span><bdi dir="ltr">claude: command not found</bdi></span></summary><div>Claude Code לא מותקן, או שהטרמינל נפתח לפני ההתקנה. התקינו לפי <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">ההוראות הרשמיות</a>, סגרו ופתחו טרמינל, ובדקו עם <code>claude --version</code>.</div></details>
+  <details class="q"><summary><span>לחצתי Enter ו-Claude נסגר מיד</span></summary><div>בחלון ״trust this folder״ ברירת המחדל היא <code>No, exit</code>. הריצו שוב <code>claude</code>, לחצו <kbd>↓</kbd> ואז <kbd>Enter</kbd>.</div></details>
+  <details class="q"><summary><span>בהתקנה הופיע טקסט ארוך על <bdi dir="ltr">detached HEAD</bdi></span></summary><div>זו הודעה רגילה של git כשמורידים גרסה מסוימת. היא לא מעידה על תקלה. חכו ל-<code>✓ career-ops is ready</code>.</div></details>
+  <details class="q"><summary><span>הוא כותב <bdi dir="ltr">Playwright isn't set up</bdi>. ההתקנה נכשלה?</span></summary><div>לא. הדפדפן ליצירת PDF הותקן, וקובצי ה-PDF נוצרו כרגיל. ההודעה מתייחסת לכלי דפדפן נוסף בתוך Claude Code, שמאפשר לבדוק בדפדפן אם משרה עדיין פתוחה. בלעדיו הוא בודק בדרך אחרת. אם תרצו להוסיף אותו, הריצו בתוך Claude:<div class="cmd"><code>/plugin install playwright@claude-plugins-official</code><button class="copy" type="button">העתקה</button></div></div></details>
+  <details class="q"><summary><span>Claude פתוח ולא קורה כלום</span></summary><div>הוא מחכה לכם. הדביקו קישור למשרה או כתבו <code>/career-ops</code>. שאלות ההיכרות מתחילות רק אחרי ההודעה הראשונה.</div></details>
+  <details class="q"><summary><span>הוא מבקש אישור על כל פעולה</span></summary><div>זו התנהגות של Claude Code במצב ידני. אפשר לאשר כל פעם, לבחור ״Yes, don't ask again״ לפעולה מסוימת, או להחליף מצב ב-<kbd>Shift</kbd>+<kbd>Tab</kbd>. חשבו לפני שאתם מאשרים הכול אוטומטית.</div></details>
+  <details class="q"><summary><span>הוא כותב שהקובץ <bdi dir="ltr">_brief.md</bdi> עדיין תבנית</span></summary><div>זה קובץ למיון מהיר של הרבה משרות. אם תגידו לו ״כן״, הוא ימלא אותו מהקו״ח שלכם לפני שתעבדו על רשימה גדולה.</div></details>
+  <details class="q"><summary><span>הופיעה הודעה <bdi dir="ltr">career-ops update available</bdi></span></summary><div>יצאה גרסה חדשה. אם תאשרו, הוא יעדכן את קבצי המערכת בלבד. הקו״ח, הפרופיל והמעקב שלכם לא נוגעים. יש גם אפשרות חזרה לגרסה הקודמת: <code>npm run rollback</code>.</div></details>
+  <details class="q"><summary><span>עברית בטרמינל נראית הפוכה</span></summary><div>בחלק מהטרמינלים עברית מוצגת הפוך. Claude עדיין מבין אותה נכון. אם זה מפריע, כתבו לו באנגלית או בקשו ממנו לענות באנגלית.</div></details>
+</section>
+
+<!-- ============ LIMITS ============ -->
+<section class="part wrap" id="limits">
+  <div class="part-head">
+    <span class="eyebrow">בכנות</span>
+    <h2>מגבלות חשובות</h2>
+  </div>
+  <ul class="checks nots">
+    <li><b>תקראו כל קו״ח לפני ששולחים.</b> הכלל ״לא להמציא״ נאכף בהוראות ובבדיקות, אבל הוא לא מושלם.</li>
+    <li><b>מחקר על חברות ושכר הוא תוצר של AI.</b> המספרים מגיעים מחיפוש ברשת. אמתו לפני שאתם מסתמכים עליהם בשיחה.</li>
+    <li><b>התוצאות משתנות.</b> אותה משרה יכולה לקבל דוח קצת אחר בכל הרצה.</li>
+    <li><b>זה עולה כסף.</b> כל הערכה צורכת מהמנוי או מה-API. בשביל סריקות גדולות כדאי <code>economy</code>.</li>
+    <li><b>מה נבדק:</b> ההתקנה וההערכה הראשונה נבדקו מקצה לקצה על Mac עם גרסה 1.34.0 (28.9.2026). ההתקנה נבדקה שוב על 1.36.0 (10.10.2026), עם אותם שלבים, אותן שאלות היכרות ואותן פקודות. ב-Windows ו-Linux לא בדקנו.</li>
+    <li><b>מסלול 2 הוא לא מוצר.</b> הוא מתאר את מה שבניתי לעצמי. הפרומפטים נבדקו בבדיקות בסיסיות בלבד, והקוד שלי לא מפורסם.</li>
+    <li><b>הגשה אוטומטית וקריאת וואטסאפ</b> דורשות שיקול דעת: תנאי השימוש של האתרים, פרטיות של חברי הקבוצות, ואחריות אישית שלכם.</li>
+  </ul>
+</section>
+
+<footer class="wrap">
+  <div class="divider"></div>
+  <p style="margin-top:22px"><b>Career Ops</b> הוא פרויקט קוד פתוח מאת santifer וקהילת התורמים. <a href="https://github.com/career-ops-hq/career-ops" target="_blank" rel="noopener">לפרויקט ב-GitHub</a></p>
+  <p>המדריך הזה הוא עצמאי ואינו קשור רשמית ל-Career Ops או ל-Anthropic.</p>
+  <p>הדמות ״Alex Rivera״ בצילומי המסך בדויה.</p>
+</footer>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-label="תמונה מוגדלת"><img alt=""></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var KEY='cog-progress-v1', store={};
+  try{store=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){store={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}}
+
+  // theme
+  var root=document.documentElement;
+  try{var t=localStorage.getItem('cog-theme');if(t)root.setAttribute('data-theme',t)}catch(e){}
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';root.setAttribute('data-theme',next);
+    try{localStorage.setItem('cog-theme',next)}catch(e){}
+  });
+
+  // toast
+  var toast=document.getElementById('toast'),tt;
+  function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},1600)}
+
+  // copy
+  function copyText(txt,btn,label){
+    function ok(){btn.classList.add('ok');var o=btn.textContent;btn.textContent='✓ הועתק';say(label||'הועתק ✓');setTimeout(function(){btn.classList.remove('ok');btn.textContent=o},1500)}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(ok,fallback)}else fallback();
+    function fallback(){var ta=document.createElement('textarea');ta.value=txt;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){say('לא הצלחתי להעתיק, סמנו ידנית')}document.body.removeChild(ta)}
+  }
+  document.querySelectorAll('.cmd .copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var code=b.parentNode.querySelector('code').cloneNode(true);
+      code.querySelectorAll('.c').forEach(function(c){c.remove()});
+      copyText(code.textContent.replace(/^\s*\n/gm,'').trim(),b,'הפקודה הועתקה ✓ הדביקו בטרמינל');
+    });
+  });
+  document.querySelectorAll('.prompt').forEach(function(p){
+    var b=p.querySelector('.copy'),pre=p.querySelector('pre'),m=p.querySelector('.more');
+    b.addEventListener('click',function(){copyText(pre.textContent.trim(),b,'הפרומפט הועתק ✓ הדביקו ב-Claude')});
+    if(m){
+      if(pre.scrollHeight<=pre.clientHeight+4){m.remove()}
+      else m.addEventListener('click',function(){var o=p.classList.toggle('open');m.textContent=o?'צמצום':'הצגת הפרומפט המלא'});
+    }
+  });
+
+  // steps / progress
+  var steps=[].slice.call(document.querySelectorAll('[data-step]'));
+  function render(){
+    var tot={basic:0,pro:0},dn={basic:0,pro:0};
+    steps.forEach(function(s){
+      var id=s.getAttribute('data-step'),tr=s.getAttribute('data-track'),d=!!store[id];
+      tot[tr]++;if(d)dn[tr]++;
+      s.classList.toggle('done',d);
+      var b=s.querySelector('.done-btn');if(b){b.textContent=d?'✓ סיימתי':'סמנו שסיימתי';b.setAttribute('aria-pressed',d)}
+      var l=document.querySelector('.drawer a .chk[data-for="'+id+'"]');if(l)l.parentNode.classList.toggle('done',d);
+    });
+    document.querySelectorAll('[data-prog]').forEach(function(el){var k=el.getAttribute('data-prog');el.textContent=dn[k]+'/'+tot[k]+' ✓'});
+  }
+  steps.forEach(function(s){
+    var b=s.querySelector('.done-btn');if(!b)return;
+    b.addEventListener('click',function(){var id=s.getAttribute('data-step');store[id]=!store[id];save();render();if(store[id])say('כל הכבוד! ✓')});
+  });
+  render();
+
+  // scroll bar
+  var bar=document.getElementById('bar');
+  function onScroll(){var h=document.documentElement;var max=h.scrollHeight-h.clientHeight;bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%'}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // drawer
+  var menuBtn=document.getElementById('menuBtn');
+  function nav(o){document.body.classList.toggle('nav-open',o);menuBtn.setAttribute('aria-expanded',o)}
+  menuBtn.addEventListener('click',function(){nav(!document.body.classList.contains('nav-open'))});
+  document.getElementById('scrim').addEventListener('click',function(){nav(false)});
+  document.querySelectorAll('.drawer a').forEach(function(a){a.addEventListener('click',function(){nav(false)})});
+  addEventListener('keydown',function(e){if(e.key==='Escape'){nav(false);lb.classList.remove('on')}});
+
+  // open feature accordion when linked
+  function openHash(){var h=location.hash&&document.querySelector(location.hash);if(h&&h.tagName==='DETAILS'){h.open=true;setTimeout(function(){h.scrollIntoView()},30)}}
+  addEventListener('hashchange',openHash);openHash();
+
+  // lightbox
+  var lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+  document.querySelectorAll('figure button').forEach(function(b){b.addEventListener('click',function(){var i=b.querySelector('img');lbi.src=i.src;lbi.alt=i.alt;lb.classList.add('on')})});
+  lb.addEventListener('click',function(){lb.classList.remove('on')});
+})();
+</script>
+</body>
+</html>
